@@ -1,8 +1,7 @@
 import Navbar from "./components/Navbar";
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 
 export default function Home() {
-
   return (
     <div className="flex flex-col min-w-screen min-h-screen items-center bg-zinc-50 font-sans dark:bg-black">
       <Navbar />
@@ -12,11 +11,15 @@ export default function Home() {
             <h1 className="text-6xl max-w-3xl">
               Clareza no propósito. Precisão na execução.
             </h1>
-            <p className="text-gray-900/60 text-2xl">Construído em volta do que realmente importa</p>
+            <p className="text-gray-900/60 text-2xl">
+              Construído em volta do que realmente importa
+            </p>
           </section>
           <section className="w-full flex gap-8 items-center justify-center font-sans text-black dark:text-zinc-50">
             <Button size={"lg"}>Testar Telos</Button>
-            <Button size={"lg"} variant={"ghost"}>Sobre nós</Button>
+            <Button size={"lg"} variant={"ghost"}>
+              Sobre nós
+            </Button>
           </section>
         </div>
       </main>
