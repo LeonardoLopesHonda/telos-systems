@@ -27,7 +27,7 @@ export class TidesEffect {
     this.y = this.#height / 3;
     this.#amplitude = 25;
     this.#length = 0.005;
-    this.#speed = 0.025;
+    this.#speed = 0.0085;
     this.color = "rgba(255, 255, 255, .3)";
     this.#increment = 0;
   }

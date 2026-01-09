@@ -5,7 +5,7 @@ import { TidesEffect } from "../effects/TideEffect";
 
 export default function Canvas() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  let canvas: any;
+  let canvas: HTMLCanvasElement;
   let context: CanvasRenderingContext2D;
   let tidesEffect: TidesEffect;
 
