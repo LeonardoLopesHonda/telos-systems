@@ -5,7 +5,7 @@ export default function Navbar() {
   const logo_scale: number = 1.25;
 
   return (
-    <nav className="w-full flex justify-between my-2">
+    <nav className="w-full flex justify-between my-2 z-10">
       {/* LEFT */}
       <div className="flex items-center mx-8 gap-2">
         <Image

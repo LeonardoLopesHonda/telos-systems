@@ -1,5 +1,4 @@
 import { Hanken_Grotesk, Tomorrow } from "next/font/google";
-import Canvas from "@/components/ui/background/canvas";
 import type { Metadata } from "next";
 import "./globals.css";
 
@@ -28,7 +27,6 @@ export default function RootLayout({
         className={`${serif.className} ${sans.className} antialiased`}
       >
         {children}
-        <Canvas />
       </body>
     </html>
   );

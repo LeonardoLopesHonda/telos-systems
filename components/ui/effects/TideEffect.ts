@@ -1,62 +1,74 @@
 export class TidesEffect {
   #ctx: CanvasRenderingContext2D;
+
   #width: number;
   #height: number;
-  x: number;
-  y: number;
+
+  #baseY: number;
+  #fillToY: number;
   #amplitude: number;
-  #length: number;
+  #frequency: number;
+  
   #speed: number;
+  #time: number;
+
   color: string;
-  #increment: number;
 
   constructor(
     ctx: CanvasRenderingContext2D,
     width: number,
-    height: number
-    /*amplitude: number,
-    length: number,
-    speed: number,
-    color: string */
+    height: number,
+    config: {
+      baseY: number,
+      fillToY: number,
+      amplitude?: number;
+      frequency?: number;
+      speed?: number;
+      color: string,
+    }
   ) {
     this.#ctx = ctx;
-    this.#ctx.strokeStyle = "white";
     this.#width = width;
     this.#height = height;
-    this.x = 0;
-    this.y = this.#height / 3;
-    this.#amplitude = 25;
-    this.#length = 0.005;
-    this.#speed = 0.0085;
-    this.color = "rgba(255, 255, 255, .3)";
-    this.#increment = 0;
+
+    this.#baseY = config.baseY;
+    this.#fillToY = config.fillToY;
+    this.#amplitude = config.amplitude ?? 25;
+    this.#frequency = config.frequency ?? 0.005;
+
+    this.#speed = config.speed ?? 0.0085;
+    this.#time = 0;
+    
+    this.color = config.color;
   }
 
-  #draw() {
-    this.#ctx.beginPath();
-    this.#ctx.moveTo(this.x, this.y);
+  draw() {
+    const ctx = this.#ctx;
 
-    for (let i = 0; i < this.#width; i++) {
+    ctx.beginPath();
+    ctx.moveTo(0, this.#baseY);
+
+    for (let x = 0; x < this.#width; x++) {
       const y =
-        this.y + Math.sin(i * this.#length + this.#increment) * this.#amplitude;
-      this.#ctx.lineTo(i, y);
+        this.#baseY + Math.sin(x * this.#frequency + this.#time) * this.#amplitude;
+      ctx.lineTo(x, y);
     }
 
-    this.#ctx.lineTo(this.#width, this.#height);
-    this.#ctx.lineTo(0, this.#height);
-    this.#ctx.closePath();
+    ctx.lineTo(this.#width, this.#fillToY);
+    ctx.lineTo(0, this.#fillToY);
+    ctx.closePath();
 
-    this.#ctx.fillStyle = this.color;
-    this.#ctx.fill();
-
-    this.#increment += this.#speed;
+    ctx.fillStyle = this.color;
+    ctx.fill();
   }
 
-  animate() {
-    this.#ctx.clearRect(0, 0, this.#width, this.#height);
-    this.#draw();
-    // this.y += 4.5;
-    console.log("stroke is being drawed");
-    requestAnimationFrame(this.animate.bind(this));
+  update() {
+    this.#time += this.#speed;
+  }
+
+  resize(width: number, height: number) {
+    this.#width = width;
+    this.#height = height;
+    this.#fillToY = height;
   }
 }
