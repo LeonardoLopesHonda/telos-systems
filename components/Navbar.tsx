@@ -25,7 +25,7 @@ export default function Navbar() {
       </div>
       {/* RIGHT */}
       <div className="flex items-center mx-8 gap-2 ">
-        <Button size={"lg"} variant={"ghost"}>
+        <Button size={"lg"} variant={"outline"}>
           Sobre nós
         </Button>
         <Button size={"lg"}>Testar Telos</Button>

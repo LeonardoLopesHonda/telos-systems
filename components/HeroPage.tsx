@@ -14,7 +14,7 @@ export default function HeroPage() {
         </section>
         <section className="w-full flex gap-8 items-center justify-center font-sans text-black dark:text-zinc-50">
           <Button size={"lg"}>Testar Telos</Button>
-          <Button size={"lg"} variant={"ghost"}>
+          <Button size={"lg"} variant={"outline"}>
             Sobre nós
           </Button>
         </section>
